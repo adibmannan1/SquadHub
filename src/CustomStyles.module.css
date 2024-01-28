@@ -1,0 +1,15 @@
+.select-container{
+    display: flex !important;
+    justify-content: center !important;
+    position: relative !important;
+    min-width: 250px !important;
+    height: 50px !important;
+}
+.select-box{
+    border: none !important;
+    appearance: none !important;
+    padding: 0 30px 0 15px !important;
+    width: 100% !important;
+    color: white !important;
+    background-color: green !important;
+}
