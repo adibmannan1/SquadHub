@@ -5,9 +5,16 @@ const Header = ({selectedTeam, teamMemberCount}) => {
     <header className='container'>
       <div className='row justify-content-center mt-3 mb-4'>
         <div className='col-8'>
-          <div className='d-flex align-items-center gap-4'>
-            <img src="/logo.png" alt="" style={{ width: '70px' }} />
-            <h3 className='fw-bold'>Team Member Allocation</h3>
+          <div>
+            <div className='d-flex align-items-center gap-4'>
+              <img src="/logo.png" alt="" style={{ width: '70px' }} />
+              <h3 className='fw-bold'>Team Member Allocation</h3>
+            </div>
+            <div>
+              <nav>
+                
+              </nav>
+            </div>
           </div>
           <div className='mt-4'>
             <h3 className='team-info'>{selectedTeam} has {teamMemberCount} members</h3>

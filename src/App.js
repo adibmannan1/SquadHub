@@ -1,22 +1,29 @@
 import './App.css';
-import Employees from './Employees';
+import Employees from './Employees'
 import Header from './Header'
 import Footer from './Footer'
-import { useState } from 'react'
-import portrait1 from './images/portrait 1.jpg';
-import portrait2 from './images/portrait 2.jpg';
-import portrait3 from './images/portrait 3.jpg';
-import portrait5 from './images/portrait 5.jpg';
-import portrait6 from './images/portrait 6.jpg';
-import portrait7 from './images/portrait 7.jpg';
-import portrait8 from './images/portrait 8.jpg';
-import portrait9 from './images/portrait 9.jpg';
-import portrait10 from './images/portrait 10.jpg';
-import styles from './CustomStyles.module.css';
+import Nav from './Nav';
+import GroupedTeamMembers from './GroupedTeamMembers'
+import NotFound from './NotFound';
+import { useState, useEffect } from 'react'
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import portrait1 from './images/portrait 1.jpg'
+import portrait2 from './images/portrait 2.jpg'
+import portrait3 from './images/portrait 3.jpg'
+import portrait5 from './images/portrait 5.jpg'
+import portrait6 from './images/portrait 6.jpg'
+import portrait7 from './images/portrait 7.jpg'
+import portrait8 from './images/portrait 8.jpg'
+import portrait9 from './images/portrait 9.jpg'
+import portrait10 from './images/portrait 10.jpg'
+
 
 function App() {
-  const [selectedTeam, setTeam] = useState('Team A')
+  const [selectedTeam, setTeam] = useState(
+    JSON.parse(localStorage.getItem('selectedTeam')) || 'Team A'
+    )
   const [employees, setEmployees] = useState(
+    JSON.parse(localStorage.getItem('employeeList')) ||
   [{  id: 1,
       fullName: "Sam Reynolds",
       designation: "Machine Learning Engineer",
@@ -89,6 +96,12 @@ function App() {
       image: portrait10
     }]
     )
+    useEffect(()=>{
+      localStorage.setItem('selectedTeam', JSON.stringify(selectedTeam));
+    }, [selectedTeam]);
+    useEffect(()=>{
+      localStorage.setItem('employeeList', JSON.stringify(employees));
+    }, [employees]);
 
     function handleTeamSelectionChange(event){
       setTeam(event.target.value)
@@ -100,15 +113,23 @@ function App() {
         {...employee, teamName: ''} : {...employee, teamName: selectedTeam} : employee))
       setEmployees(trasformedEmployees)
     }
+
   return (
-    <div className="App">
-      <Header selectedTeam={selectedTeam} 
-      teamMemberCount={employees.filter((employee)=>employee.teamName === selectedTeam).length}/>
-      <Employees employees={employees} selectedTeam={selectedTeam} 
-      handleTeamSelectionChange={handleTeamSelectionChange} 
-      handleEmployeeCardClick={handleEmployeeCardClick}/>
+    <Router>
+      <div className='header'>
+        <Header selectedTeam={selectedTeam}
+        teamMemberCount={employees.filter((employee)=>employee.teamName === selectedTeam).length}/>
+        <Nav/>
+      </div>
+      <Routes>
+        <Route path='/' element={<Employees employees={employees} selectedTeam={selectedTeam} 
+        handleTeamSelectionChange={handleTeamSelectionChange} 
+        handleEmployeeCardClick={handleEmployeeCardClick}/>}/>
+        <Route path='/groupedTeamMembers' element={<GroupedTeamMembers/>}/>
+        <Route path='*' element={<NotFound/>}/>
+      </Routes>
       <Footer/>
-    </div>
+    </Router>
   );
 }
 

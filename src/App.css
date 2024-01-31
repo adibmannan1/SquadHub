@@ -73,3 +73,48 @@ body{
   margin-bottom: 10px;
   font-size: 1.2rem;
 }
+.not-found{
+  text-align: center;
+}
+.not-found-image{
+  width: 425px;
+  text-align: center;
+}
+/* Header */
+.header{
+  display: flex;
+  width: 1200px;
+}
+.custom-navbar{
+  margin-top: 2rem;
+}
+.custom-navbar ul{
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+/* Footer */
+.footer {
+  background-color: rgb(65, 65, 65);
+  color: #fff;
+  padding: 20px;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-content p{
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #fff;
+  margin: 0 10px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+
