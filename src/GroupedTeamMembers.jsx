@@ -49,13 +49,14 @@ const GroupedTeamMembers = ({employees, selectedTeam, setTeam}) => {
             </h4>
 
             <div id={'collapse_' + groupedEmployee.team} 
-            className={groupedEmployee.collapsed === false? 'member-container' : 'member-container collapse'}>
+            className={groupedEmployee.collapsed === false? 
+            'member-container' : 'member-container collapse'}>
              {groupedEmployee.members.map(member=>(
                 <div className='custom-member-card' key={member.fullName}>
                   <img src={member.image} alt={member.fullName} className='custom-image'/>
                   <div className='member-card-content'>
-                    <h5 className=''>
-                      <span className="">{member.fullName}</span>
+                    <h5>
+                      <span>{member.fullName}</span>
                     </h5>
                     <p>{member.designation}</p>
                   </div>

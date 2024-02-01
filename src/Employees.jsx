@@ -1,7 +1,6 @@
 import React from 'react'
 import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import Teams from './Teams';
 
 const Employees = ({employees,selectedTeam,handleTeamSelectionChange,handleEmployeeCardClick}) => {
   return (
@@ -9,14 +8,9 @@ const Employees = ({employees,selectedTeam,handleTeamSelectionChange,handleEmplo
         <div className="row justify-content-center mt-3 mb-3">
           <div className="col-8">
           <div className="select-container">
-            <select className='select-box' value={selectedTeam} onChange={handleTeamSelectionChange}>
-              <option value="Team A">Team A</option>
-              <option value="Team B">Team B</option>
-              <option value="Team C">Team C</option>
-              <option value="Team D">Team D</option>
-            </select>
+            <Teams selectedTeam={selectedTeam} handleTeamSelectionChange={handleTeamSelectionChange}/>
             <div className="icon-container">
-              <FontAwesomeIcon icon={faCaretDown} className="arrow-down"/>
+              <p>↓</p>
             </div>
           </div>
           </div>
